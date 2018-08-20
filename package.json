@@ -1,0 +1,24 @@
+{
+  "name": "angel",
+  "version": "0.0.01",
+  "description": "基于koa的后端服务框架",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baiyuze/angel.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/baiyuze/angel/issues"
+  },
+  "homepage": "https://github.com/baiyuze/angel#angel",
+  "dependencies": {
+    "dayjs": "^1.7.5",
+    "koa": "^2.5.2",
+    "log4js": "^3.0.5"
+  }
+}
