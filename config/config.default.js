@@ -4,9 +4,9 @@
  * 
  */
 
- module.exports = (ctx) => {
-   let config = {
-
-   };
-   return config;
- }
+module.exports = (ctx) => {
+  let config = {
+    listen: 7001,
+  };
+  return config;
+}

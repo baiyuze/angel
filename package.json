@@ -4,7 +4,8 @@
   "description": "基于koa的后端服务框架",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "supervisor ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/baiyuze/angel#angel",
   "dependencies": {
     "dayjs": "^1.7.5",
+    "glob": "^7.1.2",
     "koa": "^2.5.2",
     "log4js": "^3.0.5"
   }
