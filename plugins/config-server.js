@@ -11,6 +11,7 @@ module.exports = async (ctx, next) => {
     if(err) throw err;
     files.forEach(item => {
       let file = require(path.join(root, item));
+      
       let obj = {};
       if(typeof file === 'function') {
         obj[item.split('/')[1]] = file();
