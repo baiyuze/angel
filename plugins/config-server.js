@@ -2,23 +2,32 @@
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
+const _ = require('lodash');
 
-module.exports = async (ctx, next) => {
-  let fileJson = {};
+module.exports = () => {
+
   let root = process.cwd();
+
+  return new Promise((resolve, reject) => {
+    glob('config/config.*.js', (err, files) => {
+      if(err) throw err;
+      let configObj = [];
+      let fileJson = {};
   
-  glob('config/config.*.js',(err, files) => {
-    if(err) throw err;
-    files.forEach(item => {
-      let file = require(path.join(root, item));
-      
-      let obj = {};
-      if(typeof file === 'function') {
-        obj[item.split('/')[1]] = file();
-      } else {
-        obj[item.split('/')[1]] = file;
-      }
-      fileJson = { fileJson, ...obj }
-    });
+      files.forEach((item, index) => {
+        let file = require(path.join(root, item));
+  
+        if(typeof file === 'function') {
+          configObj[index] = file();
+        } else {
+          configObj[index] = file;
+        }
+  
+      });
+  
+      fileJson = _.assign( {}, ...configObj );
+      resolve(fileJson);
+    })
   })
+
 }
