@@ -5,8 +5,8 @@ class Api {
     
   }
 
-  async index() {
-    console.log(this,'=---')
+  index() {
+    console.log(1231312312312312312,'=---')
   }
 }
 

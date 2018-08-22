@@ -3,7 +3,7 @@ class Index {
   }
 
   index() {
-    
+    console.log(3123123123)
   }
 }
 
