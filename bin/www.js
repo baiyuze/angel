@@ -5,6 +5,7 @@ const dayjs = require('dayjs');
 const appRouter = require('../app/router');
 const Router = require('koa-router');
 const configServer = require('../plugins/config-server');
+const controller = require('../plugins/controller');
 let router = new Router();
 
 log4js.configure({
@@ -24,6 +25,8 @@ class Context {
    */
   async initConfig() {
     this.config = await configServer();
+    this.controller = new controller();
+    console.log(this.controller,'this.controller ')
     this.initContext(this.config);
   }
 
@@ -51,6 +54,7 @@ class Context {
       ctx.config = config;
       this.ctx = ctx;
       this.router = router;
+      // console.log(this.controller.controller,'this')
       await appRouter(this);
     });
   }

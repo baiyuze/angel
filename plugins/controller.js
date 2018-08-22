@@ -1,25 +1,42 @@
-const Koa = require('koa');
-const app = new Koa();
+const fs = require('fs');
+const path = require('path');
+const glob = require('glob');
+const _ = require('lodash');
 
-class Context {
+//初始化业务逻辑代码类,规整
+class Controller {
   constructor(ctx) {
     this.ctx = ctx;
+    this.initContext();
   }
 
   /**
-   * 绑定context到当前this
+   * 拿到所有app
    * 
-   * @param {this} ctx 上下文 
+   * @param {this} app 
    */
   initContext(config) {
-    app.use(async (ctx) => {
-      ctx.config = config;
-      this.ctx = ctx;
-      this.router = router;
-      await appRouter(this);
+    let root = process.cwd();
+    let dirList = fs.readdirSync(`${root}/app`);
+
+    dirList = dirList.filter((item) => {
+      return !item.includes('.js');
     });
+
+    // console.log(files)
+    let app = {};
+    dirList.map((dir, index) => {
+      let currentDir = fs.readdirSync(path.join(`${root}/app/${dir}`));
+      currentDir.forEach((file, index) => {
+        app[dir] = {};
+        app[dir][file.split('.')[0]] = require(path.join(root,`app/${dir}/${file}`));
+      });
+    });
+    
+    this.controller = app;
+
   }
 
 }
 
-module.exports = Context;
+module.exports = Controller;
