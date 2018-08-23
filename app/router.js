@@ -5,9 +5,6 @@
 
 module.exports = async (app) => {
   let { router, controller } = app;
-  router.get('/',(ctx, next) => {
-    console.log('ctx');
-    ctx.body = 'index';
-  });
+  router.get('/',controller.api.index );
   
 }

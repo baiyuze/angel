@@ -5,7 +5,7 @@ const dayjs = require('dayjs');
 const appRouter = require('../app/router');
 const KoaRouter = require('koa-router');
 const configServer = require('../plugins/config-server');
-const controller = require('../plugins/controller');
+const Controller = require('../plugins/controller');
 let router = new KoaRouter();
 
 let logger = log4js.getLogger('cheese');
@@ -35,7 +35,7 @@ log4js.configure({
   });
 
   let config = await configServer();
-  let newController = controller();
+  let newController = new Controller().controller;
 
   /**
    * 绑定context到当前this

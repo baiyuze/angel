@@ -5,8 +5,12 @@ class Api {
     
   }
 
-  index() {
-    console.log(1231312312312312312,'=---')
+  index(ctx) {
+    console.log(this,'-===---=-==-')
+  }
+
+  test(ctx) {
+    ctx.body = 'test'
   }
 }
 

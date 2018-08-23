@@ -2,8 +2,8 @@ class Index {
   constructor(obj) {
   }
 
-  index() {
-    console.log(3123123123)
+  index(ctx) {
+    console.log(ctx)
   }
 }
 

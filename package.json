@@ -19,6 +19,7 @@
   "homepage": "https://github.com/baiyuze/angel#angel",
   "dependencies": {
     "dayjs": "^1.7.5",
+    "egg-core": "^4.9.1",
     "glob": "^7.1.2",
     "koa": "^2.5.2",
     "koa-router": "^7.4.0",
